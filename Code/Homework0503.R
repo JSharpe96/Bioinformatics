@@ -62,7 +62,7 @@ total_gaps <- sum(num_gaps_in_sequences)
 
 #Print the total number of gaps
 print(total_gaps)
-#1 gap
+#0 gaps
 
 
 
