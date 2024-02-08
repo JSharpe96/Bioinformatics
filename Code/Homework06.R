@@ -37,16 +37,7 @@ aa_sequence
 as.character(aa_sequence)
 
 #### Writing a aa sequence into a fasta file ####
-?writeXStringSet()
-writeXStringSet(aa_sequence)
-
-readAAStringSet(filepath = "Homework06", format="fasta",
-                nrec=-1L, skip=0L, seek.first.rec=FALSE,
-                use.names=TRUE, with.qualities=FALSE)
-
 output_file <- "Homework06/amino_acid_sequence.fasta"
-
-# Write the amino acid sequence to a .fasta file
 writeXStringSet(aa_sequence, file = output_file,
                 format = "fasta", width = 60)
 
