@@ -17,7 +17,7 @@ install.packages("r3dmol")
 library(UniprotR)
 library(protti)
 library(r3dmol)
-library(phangorn)
+
 
 #Set Working directory for Data and Homework folder ####
 setwd("GitHub/Bioinformatics/Data/Homework06/")
