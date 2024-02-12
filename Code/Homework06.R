@@ -20,7 +20,6 @@ library(r3dmol)
 
 
 #Set Working directory for Data and Homework folder ####
-setwd("../")
 setwd("Bioinformatics/")
 setwd("Data/")
 setwd("Homework06/")
@@ -53,7 +52,7 @@ accession_numbers<- read.table("AccNumbers.txt")
 # Print the formatted string
 #print(accession_string)
 
-
+#This is where the problem is ####
 AccessionNumbersGO <- GetProteinGOInfo(accession_numbers)
 PlotGoInfo(AccessionNumbersGO)
 ?PlotGoInfo()
@@ -91,8 +90,8 @@ print(protein_entries)
 #}
 
 # Call the function with your accession numbers
-result <- GetProteinGOInfoWithRetry(accession_numbers)
-print(result)
+#result <- GetProteinGOInfoWithRetry(accession_numbers)
+#print(result)
 
 
 
