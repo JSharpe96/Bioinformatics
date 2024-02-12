@@ -1,26 +1,26 @@
 {
-    "id": "733A3810",
-    "path": "C:/Users/18638/OneDrive/Desktop/GitHub/Bioinformatics/Code/script.R",
-    "project_path": "Code/script.R",
+    "id": "45BDF718",
+    "path": "C:/Users/18638/OneDrive/Desktop/GitHub/Bioinformatics/Code/Homework06.R",
+    "project_path": "Code/Homework06.R",
     "type": "r_source",
-    "hash": "3214127810",
+    "hash": "586290043",
     "contents": "",
     "dirty": false,
-    "created": 1706826947241.0,
+    "created": 1707757153932.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "34,0",
-        "scrollLine": "0"
+        "cursorPosition": "92,1",
+        "scrollLine": "72"
     },
     "folds": "",
-    "lastKnownWriteTime": 1706830164,
+    "lastKnownWriteTime": 1707758033,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1706830164461,
+    "last_content_update": 1707758033550,
     "read_only": false,
     "read_only_alternatives": []
 }
