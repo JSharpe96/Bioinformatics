@@ -44,54 +44,37 @@ writeXStringSet(aa_sequence, file = output_file,
 accession_numbers<- read.table("AccNumbers.txt")
 
 # Sample list of accession numbers
-#accession_numbers <- c("AYN72248", "AYN72247", "AYN72246", "AYN72242", "KAF0875111")
+accession_numbers <- c("A0A6G1AHE8", "A0A7J7SV63", "P21445", "Q2F7I8", "A0A7J7U5J2")
 
 # Convert the list to a character string
-#accession_string <- paste(accession_numbers, collapse = ",")
+accession_string <- paste(accession_numbers, collapse = ",")
 
 # Print the formatted string
-#print(accession_string)
+print(accession_string)
 
-#This is where the problem is ####
+#Reading accession numbers into GetProteinGOInfo ####
 AccessionNumbersGO <- GetProteinGOInfo(accession_numbers)
+str(AccessionNumbersGO)
+#write.csv(AccessionNumbersGO, "AccessionNumbersGO.csv", row.names = FALSE)
+
 PlotGoInfo(AccessionNumbersGO)
-#?PlotGoInfo()
-
-# Connect to UniProt database
-#up <- UniProt.ws(accession_numbers)
-
-# Query UniProt database to retrieve protein entries
-#protein_entries <- getBM(attributes = c('acc', 'go_id'),
-#                         filters = 'acc',
-#                         values = accession_numbers,
-#                         mart = up)
-
-# Show the retrieved GO terms
-#print(protein_entries)
+?PlotGoInfo()
 
 
-# Define a function to fetch protein GO information with retry logic
-#GetProteinGOInfoWithRetry <- function(accession_numbers, max_retries = 3) {
-#  attempt <- 1
-#  while (attempt <= max_retries) {
-#    tryCatch({
-#      # Attempt to fetch protein GO information
-#      AccessionNumbersGO <- GetProteinGOInfo(accession_numbers)
-#     return(AccessionNumbersGO)
-#    }, error = function(e) {
-#      # Print error message
-#      print(paste("Error occurred on attempt", attempt, ": ", conditionMessage(e)))
-      # Increment attempt count
-#      attempt <- attempt + 1
- #   })
- # }
-  # If all attempts fail, return an error message
-#  return("Max retries exceeded. Unable to fetch data.")
-#}
 
-# Call the function with your accession numbers
-#result <- GetProteinGOInfoWithRetry(accession_numbers)
-#print(result)
+# Assuming AccessionNumbersGO is your original data frame
+# Extract GO terms and their counts from AccessionNumbersGO
+go_terms <- unlist(strsplit(AccessionNumbersGO$Gene.Ontology..GO., ";"))
+go_terms <- gsub("\\[.*?\\]", "", go_terms)  # Remove GO IDs from GO terms
 
+# Create a data frame with GO terms and their counts
+go_counts <- data.frame(GoTerm = go_terms, Count = rep(1, length(go_terms)))
+
+# Summarize the counts for each GO term
+go_counts <- aggregate(Count ~ GoTerm, go_counts, sum)
+
+# Plot the GO information
+barplot(go_counts$Count, names.arg = go_counts$GoTerm,
+        xlab = "GO Terms", ylab = "Count", main = "GO Term Distribution")
 
 
