@@ -20,18 +20,19 @@ library(r3dmol)
 
 
 #Set Working directory for Data and Homework folder ####
-setwd("GitHub/Bioinformatics/Data/Homework06/")
-
+setwd("../")
+setwd("Bioinformatics/")
+setwd("Data/")
+setwd("Homework06/")
 
 #Checked that directory was in place ####
 getwd()
 
-mySequences01 <- readDNAStringSet("Homework06/sequence01.fasta")
-
+mySequences01 <- readDNAStringSet("sequence01.fasta")
+mySequences01
 
 #### Translate DNA sequence into AA sequence ####
-dna_sequences <- readDNAStringSet("Homework06/sequence01.fasta")
-aa_sequence <- translate(dna_sequences)
+aa_sequence <- translate(mySequences01)
 aa_sequence
 as.character(aa_sequence)
 
