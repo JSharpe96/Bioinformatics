@@ -55,19 +55,19 @@ accession_numbers<- read.table("AccNumbers.txt")
 #This is where the problem is ####
 AccessionNumbersGO <- GetProteinGOInfo(accession_numbers)
 PlotGoInfo(AccessionNumbersGO)
-?PlotGoInfo()
+#?PlotGoInfo()
 
 # Connect to UniProt database
-up <- UniProt.ws(accession_numbers)
+#up <- UniProt.ws(accession_numbers)
 
 # Query UniProt database to retrieve protein entries
-protein_entries <- getBM(attributes = c('acc', 'go_id'),
-                         filters = 'acc',
-                         values = accession_numbers,
-                         mart = up)
+#protein_entries <- getBM(attributes = c('acc', 'go_id'),
+#                         filters = 'acc',
+#                         values = accession_numbers,
+#                         mart = up)
 
 # Show the retrieved GO terms
-print(protein_entries)
+#print(protein_entries)
 
 
 # Define a function to fetch protein GO information with retry logic
