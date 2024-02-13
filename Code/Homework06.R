@@ -114,7 +114,7 @@ fetch_pdb("2HWG")
 
 #13. Get information on any available 3D structures for your gene
 fetch_alphafold_prediction(accession_numbers)
-
+#Is in file Bioinformatics\Output\Homework_06
 
 
 
