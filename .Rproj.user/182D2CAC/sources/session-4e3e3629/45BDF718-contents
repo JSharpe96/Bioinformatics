@@ -58,6 +58,8 @@ str(AccessionNumbersGO)
 #write.csv(AccessionNumbersGO, "AccessionNumbersGO.csv", row.names = FALSE)
 
 #7. Extract GO terms and their counts from AccessionNumbersGO ####
+View(AccessionNumbersGO)
+df <-- read.csv(AccessionNumbersGO.csv)
 #PlotGoInfo(AccessionNumbersGO) #--> Did not work
 go_terms <- unlist(strsplit(AccessionNumbersGO$Gene.Ontology..GO., ";"))
 go_terms <- gsub("\\[.*?\\]", "", go_terms)  # Remove GO IDs from GO terms
@@ -81,8 +83,8 @@ Get.diseases(accession_numbers)
 
 #11. We are going to access structural information using the protti package ####
 
-fetch_uniprot(accession_numbers)
-
+viewtibble <- fetch_uniprot(accession_numbers)
+View(viewtibble)
 
 #12. Pull any available structural information from the Protein DataBase
 fetch_pdb("1ZMR")

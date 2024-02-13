@@ -3,7 +3,7 @@
     "path": "C:/Users/18638/OneDrive/Desktop/GitHub/Bioinformatics/Code/Homework06.R",
     "project_path": "Code/Homework06.R",
     "type": "r_source",
-    "hash": "1920310193",
+    "hash": "1652238661",
     "contents": "",
     "dirty": false,
     "created": 1707757153932.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "60,49",
-        "scrollLine": "56",
+        "cursorPosition": "88,0",
+        "scrollLine": "77",
         "docOutlineVisible": "1"
     },
     "folds": "",
-    "lastKnownWriteTime": 1707841905,
+    "lastKnownWriteTime": 1707843854,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1707841905890,
+    "last_content_update": 1707843854532,
     "read_only": false,
     "read_only_alternatives": []
 }
