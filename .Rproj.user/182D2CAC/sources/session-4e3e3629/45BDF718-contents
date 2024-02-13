@@ -30,20 +30,20 @@ getwd()
 mySequences01 <- readDNAStringSet("sequence01.fasta")
 mySequences01
 
-#### Translate DNA sequence into AA sequence ####
+#3. Translate DNA sequence into AA sequence ####
 aa_sequence <- translate(mySequences01)
 aa_sequence
 as.character(aa_sequence)
 
-#### Writing a aa sequence into a fasta file ####
+# Writing a aa sequence into a fasta file
 output_file <- "amino_acid_sequence.fasta"
 writeXStringSet(aa_sequence, file = output_file,
                 format = "fasta", width = 60)
 
-#### Read this file into R using the appropriate function ####
+#4. Read this file into R using the appropriate function ####
 accession_numbers<- read.table("AccNumbers.txt")
 
-# Sample list of accession numbers
+#5. Sample list of accession numbers ####
 accession_numbers <- c("A0A6G1AHE8", "A0A7J7SV63", "P21445", "Q2F7I8", "A0A7J7U5J2")
 
 # Convert the list to a character string
@@ -52,18 +52,13 @@ accession_string <- paste(accession_numbers, collapse = ",")
 # Print the formatted string
 print(accession_string)
 
-#Reading accession numbers into GetProteinGOInfo ####
+#6. Reading accession numbers into GetProteinGOInfo ####
 AccessionNumbersGO <- GetProteinGOInfo(accession_numbers)
 str(AccessionNumbersGO)
 #write.csv(AccessionNumbersGO, "AccessionNumbersGO.csv", row.names = FALSE)
 
-PlotGoInfo(AccessionNumbersGO)
-?PlotGoInfo()
-
-
-
-# Assuming AccessionNumbersGO is your original data frame
-# Extract GO terms and their counts from AccessionNumbersGO
+#7. Extract GO terms and their counts from AccessionNumbersGO ####
+#PlotGoInfo(AccessionNumbersGO) #--> Did not work
 go_terms <- unlist(strsplit(AccessionNumbersGO$Gene.Ontology..GO., ";"))
 go_terms <- gsub("\\[.*?\\]", "", go_terms)  # Remove GO IDs from GO terms
 
@@ -76,5 +71,41 @@ go_counts <- aggregate(Count ~ GoTerm, go_counts, sum)
 # Plot the GO information
 barplot(go_counts$Count, names.arg = go_counts$GoTerm,
         xlab = "GO Terms", ylab = "Count", main = "GO Term Distribution")
+
+#10. Use GetPathology_Biotech() and Get.diseases() to find information on any diseases or pathologies associated with your gene ####
+GetPathology_Biotech(accession_numbers)
+#NA on all counts
+Get.diseases(accession_numbers)
+#Error
+
+
+#11. We are going to access structural information using the protti package ####
+
+fetch_uniprot(accession_numbers)
+
+
+#12. Pull any available structural information from the Protein DataBase
+fetch_pdb("1ZMR")
+#pdb_ids auth_asym_id label_asym_id reference_database_accession protein_name 
+#<chr>   <chr>        <chr>       <chr>       <chr>        
+#1ZMR    A            A           P0A799   Phosphoglyce…
+fetch_pdb("2HWG")
+#pdb_ids auth_asym_id label_asym_id reference_database_accession protein_name 
+#<chr>   <chr>        <chr>           <chr>                        <chr>        
+#1 2HWG    A            A             P08839                       Phosphoenolp…
+#2 2HWG    A            A             P08839                       Phosphoenolp…
+#3 2HWG    B            B             P08839                       Phosphoenolp…
+#4 2HWG    B            B             P08839                       Phosphoenolp…
+
+
+#13. Get information on any available 3D structures for your gene
+fetch_alphafold_prediction(accession_numbers)
+
+
+
+
+
+
+
 
 
