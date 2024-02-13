@@ -59,7 +59,7 @@ str(AccessionNumbersGO)
 
 #7. Extract GO terms and their counts from AccessionNumbersGO ####
 View(AccessionNumbersGO)
-df <-- read.csv(AccessionNumbersGO.csv)
+df <-- read.csv("Data/Homework06/AccessionNumbersGO.csv")
 #PlotGoInfo(AccessionNumbersGO) #--> Did not work
 go_terms <- unlist(strsplit(AccessionNumbersGO$Gene.Ontology..GO., ";"))
 go_terms <- gsub("\\[.*?\\]", "", go_terms)  # Remove GO IDs from GO terms
@@ -74,9 +74,21 @@ go_counts <- aggregate(Count ~ GoTerm, go_counts, sum)
 barplot(go_counts$Count, names.arg = go_counts$GoTerm,
         xlab = "GO Terms", ylab = "Count", main = "GO Term Distribution")
 
+#9. What are some interesting GO terms for your gene?
+#virion membrane
+#membrane
+#viral envelope
+#host cell plasma membrane
+#fusion of virus membrane with host plasma membrane
+
+
+
+
 #10. Use GetPathology_Biotech() and Get.diseases() to find information on any diseases or pathologies associated with your gene ####
 GetPathology_Biotech(accession_numbers)
 #NA on all counts
+summary(AccessionNumbersGO)
+
 Get.diseases(accession_numbers)
 #Error
 
