@@ -1,0 +1,28 @@
+{
+    "id": "3BFA3D8B",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1708202581735.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "id": "7e5a21f36dce4765b7849a0982c69b07",
+        "name": "mySequences",
+        "title": "mySequences",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 8386095523104432160,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1708202581735,
+    "read_only": false,
+    "read_only_alternatives": []
+}
