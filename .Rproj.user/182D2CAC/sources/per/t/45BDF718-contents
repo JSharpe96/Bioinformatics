@@ -39,7 +39,7 @@ as.character(aa_sequence)
 output_file <- "amino_acid_sequence.fasta"
 writeXStringSet(aa_sequence, file = output_file,
                 format = "fasta", width = 60)
-
+?writeXStringSet
 #4. Read this file into R using the appropriate function ####
 accession_numbers<- read.table("AccNumbers.txt")
 
