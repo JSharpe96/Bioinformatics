@@ -6,6 +6,7 @@ library(seqinr)
 library(phangorn)
 library(tidyr)
 library(dplyr)
+install.packages("beast")
 
 # set the working directory to the folder containing all of your scripts and data
 # filepaths and files should always be in quotes. Variables in R should not.
@@ -96,7 +97,14 @@ write.phyDat(MyotisAln_phyDat, "MyotisAln.fasta", format = "fasta")
 #----
 
 #Neighbor Joining Phylogenetic Tree
-MyotisAlnTree <- nj(d)
-plot(MyotisAlnTree, main="Phylogenetic Tree of Myotis myotis Gene Sequences")
+MyotisAlnTreeNJ <- nj(d)
+plot(MyotisAlnTreeNJ, main="Phylogenetic Tree of Myotis myotis Gene Sequences")
 
+#Maximum Likelihood Phylogenetic Tree
+library(beast)
+?beast
+run_mcmc <- beast(myDataList = d, subsetIndex = seqs, 
+                  zeroNormalization = TRUE)
 
+print(run_mcmc)
+plot(run_mcmc, fileName = "beast_plot.pdf", timeScale=1/6, xlab = "hours", ylab = "growth")
