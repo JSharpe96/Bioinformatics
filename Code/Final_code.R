@@ -205,36 +205,53 @@ plot(RerootNJ)
 
 #---
 #Reading in BEAST tree ####
-BEASTTree <- read.nexus("/Users/18638/OneDrive/Desktop/GitHub/Bioinformatics/Data/Final_Project/TreeAnnotator/MyotisTree01042024")
+BEASTTree <- read.nexus("/Users/18638/OneDrive/Desktop/GitHub/Bioinformatics/Data/Final_Project/TreeAnnotator/MyotisTree09042024")
+
 #---
+
 #Reroot BEAST Tree ####
 RerootBEAST <- root(BEASTTree, BEASTTree$tip.label[1])
 plot(RerootBEAST)
+
 #---
+
 #Dropping tips ####
 common_taxa <- intersect(RerootNJ$tip.label, RerootBEAST$tip.label)
 common_taxa
-# Prune trees to include only common taxa
+#Prune trees to include only common taxa
 RerootNJ_pruned <- drop.tip(RerootNJ, setdiff(RerootNJ$tip.label, common_taxa))
 RerootBEAST_pruned <- drop.tip(RerootBEAST, setdiff(RerootBEAST$tip.label, common_taxa))
 
-?drop.tip
+
 #---
 #Robinson-Foulds distance ####
-rf_distance <- dist.topo(RerootNJ, RerootBEAST)
-
-?dist.topo
+rf_distance <- dist.topo(RerootNJ_pruned, RerootBEAST_pruned)
+rf_distance
+#rf_distance = 4
 
 #---
-#Finding the differences in the tips
 
-diff_tips <- setdiff(RerootNJ$tip.label, RerootBEAST$tip.label)
-diff_tips
-#They are all different, what do I do? Do I have to reorder the NJ tree?
+#Finding number of bipartitions ####
+# Get the number of tips in the tree
+num_tips <- length(RerootNJ_pruned$tip.label)
 
+# Calculate the total number of bipartitions
+total_bipartitions <- 2^num_tips - 3
 
+total_bipartitions
+#61 for NJ Tree
 
+#---
+num_tipsbeast <- length(RerootBEAST_pruned$tip.label)
 
+# Calculate the total number of bipartitions
+total_bipartitionsbeast <- 2^num_tipsbeast - 3
+
+total_bipartitionsbeast
+#61 for BEAST Tree
+
+#---
+#Both have the same number of bipartitions 
 
 
 
