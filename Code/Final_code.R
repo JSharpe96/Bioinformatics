@@ -130,43 +130,42 @@ seqs <- c(seq_1, seq_2, seq_3, seq_4, seq_5, seq_6, seq_7, seq_8, seq_9, seq_10,
 # we do this by assigning a list of characters (using the same 'c' function)
 # to the 'names' of the combined seqs variable
 # check what these names are by first running just the names() function
-names(seqs) <- c("col4_501", "col4_502", "col4_503",
-                 "col4_504", "col4_506", "col4_507",
-                 "col4_508", "col4_509", "col4_510",
-                 "col4_511", "col4_512", "col4_513", 
-                 "col4_514", "col4_515", "col4_516",
-                 "col4_518", "col4_519", "col4_520",
-                 "col4_521", "col4_522", "col4_523",
-                 "col4_524", "col4_525", "col4_526",
-                 "col4_527", "col4_529", "col4_530", 
-                 "col4_531", "col4_533", "col4_901",
-                 "col4_905", "col4_906", "col4_908", 
-                 "col4_917", "col4_918", "col4_922", 
-                 "col4_923", "col4_924", "col4_926",
-                 "col4_927", "col4_929", "col5_501",
-                 "col5_502", "col5_503", "col5_504",
-                 "col5_506", "col5_507", "col5_508",
-                 "col5_509", "col5_510", "col5_512",
-                 "col5_519", "col5_523", "col5_524",
-                 "col5_525", "col5_526", "col5_527",
-                 "col5_528", "col5_529", "col5_530",
-                 "col5_531", "col5_532", "col5_533",
-                 "col5_534", "col5_535", "col5_536",
-                 "col5_537", "col5_538", "col5_539",
-                 "col5_540", "col5_544", "col5_901",
-                 "col5_902", "col5_903", "col5_904",
-                 "col5_905", "col5_906", "col5_907",
-                 "col5_908", "col5_909", "col5_910",
-                 "col5_918", "col3_505", "col3_506",
-                 "col3_507", "col3_508", "col3_509",
-                 "col3_903", "col3_905", "col3_907",
-                 "col3_501", "col3_502", "col3_503",
-                 "col3_504", "col4_517", "col5_911", 
+names(seqs) <- c("col_4_501", "col_4_502", "col_4_503",
+                 "col_4_504", "col_4_506", "col_4_507",
+                 "col_4_508", "col_4_509", "col_4_510",
+                 "col_4_511", "col_4_512", "col_4_513", 
+                 "col_4_514", "col_4_515", "col_4_516",
+                 "col_4_518", "col_4_519", "col_4_520",
+                 "col_4_521", "col_4_522", "col_4_523",
+                 "col_4_524", "col_4_525", "col_4_526",
+                 "col_4_527", "col_4_529", "col_4_530", 
+                 "col_4_531", "col_4_533", "col_4_901",
+                 "col_4_905", "col_4_906", "col_4_908", 
+                 "col_4_917", "col_4_918", "col_4_922", 
+                 "col_4_923", "col_4_924", "col_4_926",
+                 "col_4_927", "col_4_929", "col_5_501",
+                 "col_5_502", "col_5_503", "col_5_504",
+                 "col_5_506", "col_5_507", "col_5_508",
+                 "col_5_509", "col_5_510", "col_5_512",
+                 "col_5_519", "col_5_523", "col_5_524",
+                 "col_5_525", "col_5_526", "col_5_527",
+                 "col_5_528", "col_5_529", "col_5_530",
+                 "col_5_531", "col_5_532", "col_5_533",
+                 "col_5_534", "col_5_535", "col_5_536",
+                 "col_5_537", "col_5_538", "col_5_539",
+                 "col_5_540", "col_5_544", "col_5_901",
+                 "col_5_902", "col_5_903", "col_5_904",
+                 "col_5_905", "col_5_906", "col_5_907",
+                 "col_5_908", "col_5_909", "col_5_910",
+                 "col_5_918", "col_3_505", "col_3_506",
+                 "col_3_507", "col_3_508", "col_3_509",
+                 "col_3_903", "col_3_905", "col_3_907",
+                 "col_3_501", "col_3_502", "col_3_503",
+                 "col_3_504", "col_4_517", "col_5_911", 
                  "J60", "J61", "J62", 
                  "J63", "J64", "J65")
 #----
 #MSA ####
-# run the MSA! Assign it to a new variable
 MyotisAln <- msa(seqs)
 #----
 
@@ -196,7 +195,7 @@ plot(RerootNJ)
 #Notes
 #Look for conflicting topology
 #Find package to line up the tips of the beast tree and the nj tree
-#Robinson folds distance and KA/KP distance
+#Robinson folds distance
 #Measure if trees have the same topology
 #needs to be .tre file
 #Read up on Ape package
@@ -227,19 +226,18 @@ RerootBEAST_pruned <- drop.tip(RerootBEAST, setdiff(RerootBEAST$tip.label, commo
 #Robinson-Foulds distance ####
 rf_distance <- dist.topo(RerootNJ_pruned, RerootBEAST_pruned)
 rf_distance
-#rf_distance = 4
+#rf_distance = 170
 
 #---
 
 #Finding number of bipartitions ####
-# Get the number of tips in the tree
 num_tips <- length(RerootNJ_pruned$tip.label)
 
-# Calculate the total number of bipartitions
+#Calculate the total number of bipartitions
 total_bipartitions <- 2^num_tips - 3
 
 total_bipartitions
-#61 for NJ Tree
+#2.535301e+30 for NJ Tree
 
 #---
 num_tipsbeast <- length(RerootBEAST_pruned$tip.label)
@@ -248,18 +246,31 @@ num_tipsbeast <- length(RerootBEAST_pruned$tip.label)
 total_bipartitionsbeast <- 2^num_tipsbeast - 3
 
 total_bipartitionsbeast
-#61 for BEAST Tree
+#2.535301e+30 for BEAST Tree
 
+#a substantial difference in the overall topology between the two phylogenetic trees
 #---
 #Both have the same number of bipartitions 
+#---
+#Plotting both trees ####
+cophyloplot(RerootNJ_pruned, RerootBEAST_pruned)
 
+#Creating a legible picture 
+png("cophyloplot_output.png", width = 5000, height = 3000, res = 200)
 
+#Generate the cophyloplot
+cophyloplot(RerootNJ_pruned, RerootBEAST_pruned)
 
+#Save the plot
+dev.off()
 
-
-
-
-
-
-
-
+# CLEAN UP #####
+# Clear environment
+rm(list = ls()) 
+# Clear packages
+# requires the package pacman to work# CLEAN UP #####
+# Clear environment
+p_unload(all)  # Remove all add-ons
+# Clear console
+cat("\014")  # ctrl+L
+# Clear mind :)
